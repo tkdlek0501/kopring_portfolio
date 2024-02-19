@@ -1,16 +1,23 @@
 package com.hj.reservation.domain.store
 
 import com.hj.reservation.domain.AuditEntity
+import com.hj.reservation.domain.schedule.Schedule
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.OneToMany
+import org.hibernate.annotations.BatchSize
 
 @Entity
 class Store(
     val name: String,
 
     val phoneNumber: String,
+
+    @BatchSize(size = 100)
+    @OneToMany(mappedBy = "store")
+    val schedules: MutableList<Schedule> = mutableListOf()
 
 ) : AuditEntity() {
 
