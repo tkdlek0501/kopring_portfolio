@@ -35,6 +35,10 @@ class StoreServiceTest @Autowired constructor(
 
         // then
         val results = storeRepository.findAll()
+        val id = results[0].id
+        val name = results[0].name
+        println("id : $id")
+        println("name : $name")
         assertThat(results).hasSize(1)
         assertThat(results[0].name).isEqualTo("김현준 매장")
         assertThat(results[0].phoneNumber).isEqualTo("01000000000")

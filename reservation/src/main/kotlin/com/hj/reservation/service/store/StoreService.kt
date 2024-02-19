@@ -12,6 +12,7 @@ class StoreService(
     private val storeRepository: StoreRepository
 ) {
 
+    @Transactional
     fun saveStore(request: StoreCreateRequest) {
         val newStore = StoreCreateRequest.toEntity(request)
         storeRepository.save(newStore)
