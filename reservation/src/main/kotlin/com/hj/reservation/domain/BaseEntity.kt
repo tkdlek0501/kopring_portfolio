@@ -10,6 +10,7 @@ abstract class BaseEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     val id: Long? = null
 ) {
 
