@@ -1,5 +1,6 @@
 package com.hj.reservation.controller.store
 
+import com.hj.reservation.dto.store.request.StoreCreateRequest
 import com.hj.reservation.service.store.StoreService
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -12,9 +13,8 @@ class StoreController(
     private val storeService: StoreService
 ) {
 
-    // TODO: dto 만들어서 수정
     @PostMapping("")
-    fun saveStore(@RequestBody request: Any) {
+    fun saveStore(@RequestBody request: StoreCreateRequest) {
         storeService.saveStore(request)
     }
 

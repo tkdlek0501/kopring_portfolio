@@ -1,6 +1,7 @@
 package com.hj.reservation.service.store
 
 import com.hj.reservation.domain.store.Store
+import com.hj.reservation.dto.store.request.StoreCreateRequest
 import com.hj.reservation.repository.store.StoreRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -11,8 +12,8 @@ class StoreService(
     private val storeRepository: StoreRepository
 ) {
 
-    fun saveStore(request: Any) {
-        val newStore = Store.fixture()
+    fun saveStore(request: StoreCreateRequest) {
+        val newStore = StoreCreateRequest.toEntity(request)
         storeRepository.save(newStore)
     }
 }

@@ -1,5 +1,6 @@
 package com.hj.reservation.service.store
 
+import com.hj.reservation.dto.store.request.StoreCreateRequest
 import com.hj.reservation.repository.store.StoreRepository
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.AfterEach
@@ -18,22 +19,24 @@ class StoreServiceTest @Autowired constructor(
 
     @AfterEach
     fun clean() {
+        println("초기화")
         storeRepository.deleteAll()
     }
+    // TODO: 이거 대신 transactional rollBack 사용?
 
     @Test
     @DisplayName(value = "매장 등록이 정상 동작 합니다.")
     fun saveStoreTest() {
         // given
-        // TODO: request dto
+        val request = StoreCreateRequest(name = "김현준 매장", phoneNumber = "01000000000")
 
         // when
-//        storeService.saveStore()
+        storeService.saveStore(request)
 
         // then
-//        val results = storeRepository.findAll()
-//        assertThat(results).hasSize(1)
-//        assertThat(results[0].name).isEqualTo("")
-//        assertThat(results[0].phoneNumber).isEqualTo("")
+        val results = storeRepository.findAll()
+        assertThat(results).hasSize(1)
+        assertThat(results[0].name).isEqualTo("김현준 매장")
+        assertThat(results[0].phoneNumber).isEqualTo("01000000000")
     }
 }
