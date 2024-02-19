@@ -12,16 +12,14 @@ class Store(
 
     val phoneNumber: String,
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    val id: Long? = null,
 ) : AuditEntity() {
 
     init {
+        // TODO: 정규화 등 validation
         if (name.isBlank()) {
             throw IllegalArgumentException("이름은 비어 있을 수 없습니다.")
         }
-        // TODO: 정규화 등 validation
+//        require(phoneNumber.isBlank()) {"이름은 비어 있을 수 없습니다."}
     }
 
     companion object {
@@ -30,12 +28,10 @@ class Store(
         fun fixture(
             name: String = "매장 이름",
             phoneNumber: String = "01000000000",
-//            id: Long? = null,
         ): Store {
             return Store(
                 name = name,
                 phoneNumber = phoneNumber,
-//                id = id,
             )
         }
     }
