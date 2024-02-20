@@ -1,7 +1,10 @@
 package com.hj.reservation.domain.store
 
 import com.hj.reservation.domain.AuditEntity
+import com.hj.reservation.domain.reservation.Reservation
 import com.hj.reservation.domain.schedule.Schedule
+import com.hj.reservation.domain.schedule.timetable.DateTable
+import com.hj.reservation.domain.schedule.timetable.TimeTable
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -17,8 +20,16 @@ class Store(
 
     @BatchSize(size = 100)
     @OneToMany(mappedBy = "store")
-    val schedules: MutableList<Schedule> = mutableListOf()
+    val schedules: MutableList<Schedule> = mutableListOf(),
 
+    @OneToMany(mappedBy = "store")
+    val dateTables: MutableList<DateTable> = mutableListOf(),
+
+    @OneToMany(mappedBy = "store")
+    val reservations: MutableList<Reservation> = mutableListOf(),
+
+    @OneToMany(mappedBy = "store")
+    val timeTables: MutableList<TimeTable> = mutableListOf(),
 ) : AuditEntity() {
 
     init {
