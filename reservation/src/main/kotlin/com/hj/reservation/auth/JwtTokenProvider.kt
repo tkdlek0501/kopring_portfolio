@@ -1,6 +1,7 @@
 package com.hj.reservation.auth
 
 import com.hj.reservation.domain.user.User
+import com.hj.reservation.service.user.UserService
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -16,6 +17,8 @@ import java.util.*
 @Component
 class JwtTokenProvider(
     private val userDetailsService: UserDetailsService,
+
+    private val userService: UserService,
 ) {
 
     private var secretKey = "thisistestusersecretkeyprojectnameismologaaaaaaaaaaaaaaaa"
@@ -32,7 +35,7 @@ class JwtTokenProvider(
     }
 
     // JWY 토큰 생성
-    fun createToken(authentication: Authentication): String {
+    fun createToken(authentication: Authentication): String { //
 
         val user: User = authentication.principal as User
 

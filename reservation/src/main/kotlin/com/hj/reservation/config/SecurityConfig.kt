@@ -41,7 +41,7 @@ class SecurityConfig(
 //            }
             .authorizeExchange { authorize ->
                 authorize
-                    .pathMatchers("/public/**").permitAll()
+                    .pathMatchers("/login/**").permitAll()
 //                    .pathMatchers("/admin/**").hasRole("ADMIN")
                     .anyExchange().authenticated()
             }

@@ -14,6 +14,6 @@ class UserDetailService(
     override fun loadUserByUsername(username: String?): UserDetails {
         return userRepository.findByEmail(username) ?: fail() // .orElseThrow{
 //            BaseException(BaseResponseCode.USER_NOT_FOUND)
-        }
+//        }
     }
 }
